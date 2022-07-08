@@ -9,5 +9,6 @@ public interface RecordService {
 	public List<Record> findAllRecord();
 	public Record findById(int id);
 	public void updateRecord(Record record);
+	public void deleteRecord(int recordId);
 }
 

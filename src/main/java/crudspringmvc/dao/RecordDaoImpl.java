@@ -54,6 +54,10 @@ public class RecordDaoImpl implements RecordDao{
 		session.update(extractRecord);
 	}
 	
-	
-
+	@Override
+	@Transactional
+	public void deleteRecord(Record record) {
+		Session session = sessionFactory.getCurrentSession();
+		session.delete(record);
+	}
 }

@@ -65,13 +65,20 @@ public class RecordController {
 		return "editRecord";
 	}
 	
-	@RequestMapping(path = "editRecord/updateRecord", method = RequestMethod.POST)
+	@RequestMapping(path = "/editRecord/updateRecord", method = RequestMethod.POST)
 	public String updateRecord(@ModelAttribute @Valid Record record,BindingResult result) {
 		System.out.println("record to be updated" + record);
 		if(result.hasErrors()) {
 			return "editRecord";
 		}
 		recordService.updateRecord(record);
+		return "redirect:/showRecords";
+	}
+	
+	@RequestMapping(path = "/deleteRecord/{id}", method = RequestMethod.POST)
+	public String deleteRecord(@PathVariable("id") int id) {
+		System.out.println("record id to be delete" + id);
+		recordService.deleteRecord(id);
 		return "redirect:/showRecords";
 	}
 }

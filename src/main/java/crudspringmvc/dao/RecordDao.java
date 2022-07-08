@@ -9,4 +9,5 @@ public interface RecordDao {
 	public List<Record> findAllRecord();
 	public Record findById(int id);
 	public void updateRecord(Record record);
+	public void deleteRecord(Record record);
 }

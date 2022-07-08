@@ -17,6 +17,9 @@
 		table, th {
 		  border: 1px solid black;
 		}
+		.inline {
+		  display: inline-block; 
+		}
 	</style>
 </head>
 
@@ -41,13 +44,19 @@
 			    <td>${record.dob }</td>
 			    <td>${record.phone }</td>
 			    <td>
-					<form:form action="editRecord/${record.id}">
-
-						<input type="submit" value="Edit" />
-			
-					</form:form>
+			    	<div class="inline">
+						<form:form action="editRecord/${record.id}">
+	
+							<input type="submit" value="Edit" />
+				
+						</form:form>
+						<form:form action="deleteRecord/${record.id}">
+	
+							<input type="submit" value="Delete" />
+				
+						</form:form>
+					</div>
 				</td>
-			    
 			  </tr>
 			  </c:forEach>
 			</table>
