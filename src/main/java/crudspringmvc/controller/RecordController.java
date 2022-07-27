@@ -2,6 +2,7 @@ package crudspringmvc.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -15,13 +16,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import crudspringmvc.model.Record;
-import crudspringmvc.service.RecordService;
+import crudspringmvc.service.RecordJpaService;
 
 @Controller
 public class RecordController {
 
+	//@Autowired
+	//RecordService recordService;
+	
 	@Autowired
-	RecordService recordService;
+	RecordJpaService recordJpaService;
 	
 	@RequestMapping("")
 	public String root() {
@@ -30,7 +34,9 @@ public class RecordController {
 	
 	@RequestMapping("/showRecords")
 	public String showRecord(Model model) {
-		List<Record> records = (ArrayList<Record>) recordService.findAllRecord();
+		//List<Record> records = (ArrayList<Record>) recordService.findAllRecord();
+		List<Record> records = (ArrayList<Record>) recordJpaService.getRecords();
+		
 		System.out.println(records.size());
 		model.addAttribute("recordSize", records.size());
 		model.addAttribute("records", records);
@@ -50,16 +56,17 @@ public class RecordController {
 			return "createRecord";
 		}
 		
-		recordService.addRecord(record);
+		//recordService.addRecord(record);
+		recordJpaService.saveRecord(record);
 		
-
 		return "redirect:/showRecords";
 	}
 	
 	@RequestMapping("/editRecord/{id}")
 	public String editRecord(@PathVariable("id") int id, Model model) {
 		System.out.println(id);
-		Record result = recordService.findById(id);
+		//Record result = recordService.findById(id);
+		Optional<Record> result = recordJpaService.findById(id);
 		model.addAttribute("record", result);
 		System.out.println(result);
 		return "editRecord";
@@ -71,14 +78,16 @@ public class RecordController {
 		if(result.hasErrors()) {
 			return "editRecord";
 		}
-		recordService.updateRecord(record);
+		//recordService.updateRecord(record);
+		recordJpaService.updateRecord(record);
 		return "redirect:/showRecords";
 	}
 	
 	@RequestMapping(path = "/deleteRecord/{id}", method = RequestMethod.POST)
 	public String deleteRecord(@PathVariable("id") int id) {
 		System.out.println("record id to be delete" + id);
-		recordService.deleteRecord(id);
+		recordJpaService.deleteRecord(id);
+		//recordService.deleteRecord(id);
 		return "redirect:/showRecords";
 	}
 }

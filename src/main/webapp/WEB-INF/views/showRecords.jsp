@@ -35,6 +35,8 @@
 			    <th>Email</th>
 			    <th>dob</th>
 			    <th>phone</th>
+			    <th>city</th>
+			    <th>state</th>
 			    <th>buttons</th>
 			  </tr>
 			  <c:forEach var="record" items="${records}"> 
@@ -43,6 +45,8 @@
 			    <td>${record.email }</td>
 			    <td>${record.dob }</td>
 			    <td>${record.phone }</td>
+			    <td>${record.address.city }</td>
+			    <td>${record.address.state }</td>
 			    <td>
 			    	<div class="inline">
 						<form:form action="editRecord/${record.id}">

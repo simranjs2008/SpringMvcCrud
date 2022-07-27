@@ -36,6 +36,8 @@ public class Record {
 	
 	@Digits(message="number should contain 5 digits.", fraction = 0, integer = 5)
 	private String phone;
+	
+	private Address address;
 
 	public int getId() {
 		return id;
@@ -79,7 +81,16 @@ public class Record {
 
 	@Override
 	public String toString() {
-		return "Record [id=" + id + ", name=" + name + ", email=" + email + ", dob=" + dob + ", phone=" + phone + "]";
+		return "Record [id=" + id + ", name=" + name + ", email=" + email + ", dob=" + dob + ", phone=" + phone
+				+ ", address=" + address + "]";
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 	
 	

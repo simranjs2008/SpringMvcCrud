@@ -38,7 +38,16 @@
             <form:input path="phone" />
 			<form:errors path="phone" cssClass="error" />
 
-
+			<br>
+			<br> City:
+            <form:input path="address.city" />
+			<form:errors path="address.city" cssClass="error" />
+			
+			<br>
+			<br> State:
+            <form:input path="address.state" />
+			<form:errors path="address.state" cssClass="error" />
+			
 			<br>
 			<br>
 

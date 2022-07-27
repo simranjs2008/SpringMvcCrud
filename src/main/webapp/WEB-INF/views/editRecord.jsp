@@ -20,7 +20,7 @@
 		<form:form action="updateRecord" modelAttribute="record" method="post">
 
 			Id:
-            <form:input path="id" disabled="disabled"/>
+            <form:input path="id" readonly="true"/>
             
             <br>
 			<br> Name:
@@ -42,6 +42,15 @@
             <form:input path="phone" />
 			<form:errors path="phone" cssClass="error" />
 
+			<br>
+			<br> City:
+            <form:input path="address.city" />
+			<form:errors path="address.city" cssClass="error" />
+			
+			<br>
+			<br> State:
+            <form:input path="address.state" />
+			<form:errors path="address.state" cssClass="error" />
 
 			<br>
 			<br>
